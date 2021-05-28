@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Form chỉnh sửa thông tin học viên </title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 50px;
+        }
+
+        .icon-star {
+            margin-left: 3px;
+            color: red;
+        }
+
+        label {
+            width: 150px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 700px;
+            padding: 7px;
+            border: solid rgb(199, 199, 204) 1px;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: gray;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            margin-right: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a:hover {
+            color: white;
+            opacity: 0.9;
+        }
+
+        #buttons {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .caret {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .save-icon {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        button {
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: limegreen;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+
+        button:hover {
+            color: white;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chỉnh sửa học viên</h1>
+        <form action="#">
+            <label for="name">Họ tên<span class="icon-star">*</span></label>
+            <input id="name" class="input" type="text" name="name" required>
+            </br></br>
+            <label for="birth-day">Ngày sinh<span class="icon-star">*</span></label>
+            <input id="birthday" class="input" type="date" name="birth-day">
+            </br></br>
+            <label for="email">E-mail<span class="icon-star">*</span></label>
+            <input id="email" class="input" type="email" name="email" required>
+            </br></br>
+            <label for="phone">Phone<span class="icon-star">*</span></label>
+            <input id="phone" class="input" type="text" name="phone" required>
+            </br></br>
+        </form>
+        <div id="buttons">
+            <a href="./index.html"><i class="fas fa-angle-left caret"></i>Quay lại</a>
+            <button id="save-btn"><i class="fas fa-save save-icon"></i>Lưu</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./chinh-sua-hoc-vien.js"></script>
+</body>
+
+</html>

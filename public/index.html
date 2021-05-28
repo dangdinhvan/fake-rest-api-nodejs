@@ -1,78 +1,146 @@
-<html>
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>JSON Server</title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
 
-  <body>
-    <header>
-      <div class="container">
-        <nav>
-          <ul>
-            <li class="title">JSON Server</li>
-            <li>
-              <a href="https://github.com/users/typicode/sponsorship">
-                <i class="fas fa-heart"></i>GitHub Sponsors
-              </a>
-            </li>
-            <li>
-              <a href="https://my-json-server.typicode.com">
-                <i class="fas fa-burn"></i>My JSON Server
-              </a>
-            </li>
-            <li>
-              <a href="https://thanks.typicode.com">
-                <i class="far fa-laugh"></i>Supporters
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <div class="container">
-        <h1>Congrats!</h1>
-        <p>
-          You're successfully running JSON Server
-          <br />
-          ✧*｡٩(ˊᗜˋ*)و✧*｡
-        </p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Danh sách học viên</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
 
-        <div id="resources"></div>
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
 
-        <p>To access and modify resources, you can use any HTTP method:</p>
-        <p>
-          <code>GET</code>
-          <code>POST</code>
-          <code>PUT</code>
-          <code>PATCH</code>
-          <code>DELETE</code>
-          <code>OPTIONS</code>
-        </p>
+        a {
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-        <h1>Documentation</h1>
-        <p>
-          <a href="https://github.com/robinhuy/fake-rest-api-nodejs"> Fake REST API NodeJS </a>
-          <a href="https://github.com/typicode/json-server"> Json Server </a>
-        </p>
-      </div>
-    </main>
+        #them-hoc-vien {
+            padding: 8px;
+            background-color: rgb(40, 202, 67);
+            color: white;
+            border-radius: 5px;
+        }
 
-    <footer>
-      <div class="container">
-        <p>
-          To replace this page, create a
-          <code>./public/index.html</code> file.
-        </p>
-      </div>
-    </footer>
+        #them-hoc-vien:hover {
+            background-color: seagreen;
+        }
 
-    <script src="script.js"></script>
-  </body>
+        .table {
+            margin-top: 20px;
+        }
+
+        .header {
+            background-color: rgb(68, 68, 68);
+        }
+
+        th {
+            color: white;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            background-color: unset;
+            font-weight: 600;
+        }
+
+        span {
+            float: right;
+            margin-right: 70px;
+        }
+
+        .edit-btn {
+            color: rgb(81, 194, 183);
+        }
+
+        .edit-btn:hover {
+            color: rgb(63, 124, 114);
+        }
+
+        .del-btn {
+            color: rgb(255, 92, 92);
+        }
+
+        .del-btn:hover {
+            color: rgb(206, 49, 49);
+        }
+
+        .icon {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Danh sách học viên</h1>
+        <a id="them-hoc-vien" href="./them-moi-hoc-vien.html"><i class="fas fa-plus-circle icon"></i>Thêm học viên</a>
+        <table class="table table-striped">
+            <thead>
+                <tr class="header">
+                    <th style="width: 23%;">Họ tên</th>
+                    <th style="width: 12%;">Ngày sinh</th>
+                    <th style="width: 27%;">Email</th>
+                    <th>Số điện thoại</th>
+                </tr>
+            </thead>
+            <tbody id="table-users">
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...
+                        <span>
+                            <a class="edit-btn" href="./chinh-sua-hoc-vien.html"><i
+                                    class="fas fa-edit icon"></i>Chỉnh
+                                sửa</a>
+                            |
+                            <button class="del-btn" onclick="del()" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"><i class="fas fa-trash-alt icon"></i>Xóa</button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo xóa học viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc muốn xóa?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="./danh-sach-hoc-vien.js"></script>
+</body>
+
 </html>
