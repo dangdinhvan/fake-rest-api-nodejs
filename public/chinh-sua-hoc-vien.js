@@ -1,5 +1,5 @@
 // Hàm chức năng chỉnh sửa thông tin học viên
-let id = document.location.href.substring(46);
+let id = document.location.href.substring(67);
 $.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
     method: "GET"
 }).done(function (user) {
