@@ -39,9 +39,9 @@ $('#save-btn').click(function () {
         }).done(function () {
             alert('Cập nhập thông tin thành công');
             window.history.back();
-            // $.ajax("http://localhost:3000/users", {
-            //     method: "GET"
-            // });
+            $.ajax("http://localhost:3000/users", {
+                method: "GET"
+            });
         });
     }
 });
