@@ -38,7 +38,7 @@ $('#save-btn').click(function () {
             dataType: 'json'
         }).done(function () {
             alert('Cập nhập thông tin thành công');
-            window.location.href("https://create-server-by-van.herokuapp.com");
+            location.href("https://create-server-by-van.herokuapp.com");
         });
     }
 });
