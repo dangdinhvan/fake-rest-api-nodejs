@@ -1,6 +1,6 @@
 // Hàm chức năng vẽ giao diện và nội dung
 function loadDocJQuery() {
-  $.ajax("http://localhost:3000/users", {
+  $.ajax("https://create-server-by-van.herokuapp.com/users", {
       method: "GET"
   }).done(function (users) {
       let content = "";
@@ -36,7 +36,7 @@ $(function () {
 // Hàm chức năng xóa
 function del(id) {
   $('.btn-primary').click(function () {
-      $.ajax(`http://localhost:3000/users/${id}`, {
+      $.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
           method: "DELETE"
       }).done(function () {
           $('.modal-content').css('visibility','hidden');

@@ -17,7 +17,7 @@ $('#save-btn').click(function () {
     else {
         $.ajax({
             type: 'POST',
-            url: "http://localhost:3000/users",
+            url: "https://create-server-by-van.herokuapp.com/users",
             data: {
                 "firstName": '',
                 "lastName": $('#name').val(),

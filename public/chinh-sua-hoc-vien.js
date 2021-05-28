@@ -1,6 +1,6 @@
 // Hàm chức năng chỉnh sửa thông tin học viên
 let id = document.location.href.substring(46);
-$.ajax(`http://localhost:3000/users/${id}`, {
+$.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
     method: "GET"
 }).done(function (user) {
     $('#name').val(user.lastName);
@@ -27,7 +27,7 @@ $('#save-btn').click(function () {
     else {
         $.ajax({
             type: 'PATCH',
-            url: `http://localhost:3000/users/${id}`,
+            url: `https://create-server-by-van.herokuapp.com/users/${id}`,
             data: {
                 "firstName": '',
                 "lastName": $('#name').val(),
@@ -39,9 +39,9 @@ $('#save-btn').click(function () {
         }).done(function () {
             alert('Cập nhập thông tin thành công');
             window.history.back();
-            $.ajax("http://localhost:3000/users", {
-                method: "GET"
-            });
+            // $.ajax("http://localhost:3000/users", {
+            //     method: "GET"
+            // });
         });
     }
 });
