@@ -5,142 +5,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Danh sách học viên</title>
+    <title>Login</title>
     <style>
         * {
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
         }
-
-        h1 {
-            text-align: center;
-            margin-top: 30px;
+        body{
+            background-color: rgb(223, 223, 223);
         }
-
-        a {
-            text-decoration: none;
-            cursor: pointer;
+        #login-box {
+            background-color: white;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: none;
+            margin: 170px auto 0px auto;
+            padding: 30px 40px;
+            border-radius: 7px;
+            box-shadow: 3px 3px 15px gray;
         }
-
-        #them-hoc-vien {
-            padding: 8px;
-            background-color: rgb(40, 202, 67);
-            color: white;
+        h3{
+            margin-bottom: 30px;
+        }
+        .input {
+            width: 250px;
+            display: flex;
+            align-items: center;
+            border: solid rgb(192, 192, 192) 1px;
+            padding: 7px;
+            margin-bottom: 10px;
             border-radius: 5px;
+            
         }
 
-        #them-hoc-vien:hover {
-            background-color: seagreen;
-        }
-
-        .table {
-            margin-top: 20px;
-        }
-
-        .header {
-            background-color: rgb(68, 68, 68);
-        }
-
-        th {
-            color: white;
-        }
-
-        button {
+        input {
             border: none;
             outline: none;
-            background-color: unset;
-            font-weight: 600;
+            font-size: 17px;
         }
+       
 
-        span {
-            float: right;
-            margin-right: 70px;
+        .icon-login {
+            font-size: 17px;
+            margin-right: 7px;
+            color: gray;
         }
-
-        .edit-btn {
-            color: rgb(81, 194, 183);
-        }
-
-        .edit-btn:hover {
-            color: rgb(63, 124, 114);
-        }
-
-        .del-btn {
-            color: rgb(255, 92, 92);
-        }
-
-        .del-btn:hover {
-            color: rgb(206, 49, 49);
-        }
-
-        .icon {
-            margin-right: 5px;
+        #submit-button{
+            width: 250px;
+            border: none;
+            padding: 7px;
+            font-size: 20px;
+            color: white;
+            background-color: #64ce82;
+            margin: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Danh sách học viên</h1>
-        <a id="them-hoc-vien" href="./them-moi-hoc-vien.html"><i class="fas fa-plus-circle icon"></i>Thêm học viên</a>
-        <table class="table table-striped">
-            <thead>
-                <tr class="header">
-                    <th style="width: 23%;">Họ tên</th>
-                    <th style="width: 12%;">Ngày sinh</th>
-                    <th style="width: 27%;">Email</th>
-                    <th>Số điện thoại</th>
-                </tr>
-            </thead>
-            <tbody id="table-users">
-                <tr>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...
-                        <span>
-                            <a class="edit-btn" href="./chinh-sua-hoc-vien.html"><i
-                                    class="fas fa-edit icon"></i>Chỉnh
-                                sửa</a>
-                            |
-                            <button class="del-btn" onclick="del()" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"><i class="fas fa-trash-alt icon"></i>Xóa</button>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thông báo xóa học viên</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Bạn có chắc muốn xóa?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Xóa</button>
-                </div>
-            </div>
-        </div>
+    <div id="container">
+        <form id="login-box">
+            <h3>Member Login</h3>
+            <div class="input"><i class="fas fa-user icon-login"></i><input id="user" type="text" placeholder="Tên đăng nhập" required></div>
+            <div class="input"><i class="fas fa-lock icon-login"></i><input id="password" type="password" placeholder="Mật khẩu" required></div>
+            <button id="submit-button" type="submit">Đăng nhập</button>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
-    <script src="./danh-sach-hoc-vien.js"></script>
+    <script src="./login.js"></script>
 </body>
 
 </html>
