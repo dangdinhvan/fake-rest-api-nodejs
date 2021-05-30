@@ -38,9 +38,9 @@ $('#submit-button').click(function () {
             }
         }).done(function () {
             $('#result').html('Đăng nhập thành công!').css('color', 'green');
-            setTimeout(() => {
-                window.location = "./danh-sach-hoc-vien.html";
-            }, 1000);
+            
+            window.location = "./danh-sach-hoc-vien.html";
+
         }).fail(function () {
             $('#result').html('Tài khoản hoặc mật khẩu không chính xác!').css('color', 'red');
         });
