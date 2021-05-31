@@ -4,46 +4,38 @@ $(function () {
     });
 });
 
-$(function () {
-    $("input[name=username]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập tên đăng nhập");
-    };
-});
-
-$(function () {
-    $("input[name=username]")[0].oninput = function () {
-        this.setCustomValidity("");
-    };
-});
-
-$(function () {
-    $("input[name=password]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập mật khẩu");
-    };
-});
-
-$(function () {
-    $("input[name=password]")[0].oninput = function () {
-        this.setCustomValidity("");
-    };
-});
-
-$('#submit-button').click(function () {
-    if ($('#user').val() !== '' && $('#password').val() !== '') {
-        $.ajax("https://create-server-by-van.herokuapp.com/login", {
+// hàm gọi yêu cầu đăng nhập
+function login() {
+    if ($('#user').val() === '' || $('#password').val() === '') {
+        if($('#user').val() === ''){
+            $('#result').html('Bạn cần nhập tên đăng nhập').css('color', 'red').css('font-size', '15px');
+        }
+        else if($('#password').val() === ''){
+            $('#result').html('Bạn cần nhập mật khẩu').css('color', 'red').css('font-size', '15px');
+        }
+    }
+    else {
+        $.ajax("http://localhost:3000/login", {
             method: "POST",
             data: {
                 "username": $('#user').val(),
                 "password": $('#password').val()
             }
         }).done(function () {
-            $('#result').html('Đăng nhập thành công!').css('color', 'green');
-            
-            window.location = "./danh-sach-hoc-vien.html";
-
+            $('#result').html('Đăng nhập thành công').css('color', 'green').css('font-size', '17px');
+            setTimeout(() => {
+                window.location = "./danh-sach-hoc-vien.html";
+            }, 1200);
         }).fail(function () {
-            $('#result').html('Tài khoản hoặc mật khẩu không chính xác!').css('color', 'red');
+            $('#result').html('Tài khoản hoặc mật khẩu không chính xác').css('color', 'red').css('font-size', '14px');
         });
+    }
+};
+
+// thêm chức nămg enter cho button
+$("#login-box").keyup(function (event) {
+    if (event.keyCode === 13) {
+        login();
     }
 });
 
