@@ -15,7 +15,7 @@ function login() {
         }
     }
     else {
-        $.ajax("http://localhost:3000/login", {
+        $.ajax("https://create-server-by-van.herokuapp.com/login", {
             method: "POST",
             data: {
                 "username": $('#user').val(),
