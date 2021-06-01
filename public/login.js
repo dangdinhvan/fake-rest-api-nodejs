@@ -1,9 +1,3 @@
-$(function () {
-    $.ajax("https://create-server-by-van.herokuapp.com/users", {
-        method: "GET"
-    });
-});
-
 // hàm gọi yêu cầu đăng nhập
 function login() {
     if ($('#user').val() === '' || $('#password').val() === '') {
