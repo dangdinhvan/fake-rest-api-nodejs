@@ -42,7 +42,7 @@ function del(id) {
           $('.modal-content').css('visibility','hidden');
           setTimeout(() => {
               alert('Đã xóa thành công');
-              location.reload();
+              $(this).parent().parent().parent().remove();
           }, 100);
       });
   });
