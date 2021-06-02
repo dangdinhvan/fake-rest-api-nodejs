@@ -1,5 +1,5 @@
 // lấy thông tin của học viên
-let id = document.location.href.substring(67);
+const id = location.href.split('?id=')[1];
 $.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
     method: "GET"
 }).done(function (user) {
