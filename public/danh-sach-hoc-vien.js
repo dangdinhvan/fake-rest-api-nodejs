@@ -43,7 +43,6 @@ function del(id) {
     }).done(function () {
       $('.modal-content').css('visibility', 'hidden');
       setTimeout(() => {
-        alert('Đã xóa thành công');
         $('.modal').modal('hide');
         $(`#${id}`).remove();
       }, 100);

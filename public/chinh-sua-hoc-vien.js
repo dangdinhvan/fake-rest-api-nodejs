@@ -23,30 +23,7 @@ $(function () {
     };
 });
 //--------------------------------------------------------
-$(function () {
-    $("input[name=birth-day]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập ngày tháng năm sinh");
-    };
-});
 
-$(function () {
-    $("input[name=birth-day]")[0].oninput = function () {
-        this.setCustomValidity("");
-    };
-});
-//--------------------------------------------------------
-$(function () {
-    $("input[name=email]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập email");
-    };
-});
-
-$(function () {
-    $("input[name=email]")[0].oninput = function () {
-        this.setCustomValidity("");
-    };
-});
-//--------------------------------------------------------
 $(function () {
     $("input[name=phone]")[0].oninvalid = function () {
         this.setCustomValidity("Bạn cần nhập số điện thoại");
