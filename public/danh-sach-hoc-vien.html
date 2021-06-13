@@ -18,7 +18,7 @@
 
         h1 {
             text-align: center;
-            margin-top: 30px;
+            margin: 30px;
         }
 
         a {
@@ -31,6 +31,8 @@
             background-color: rgb(40, 202, 67);
             color: white;
             border-radius: 5px;
+            display: flex;
+            align-items: center;
         }
 
         #them-hoc-vien:hover {
@@ -48,7 +50,9 @@
         th {
             color: white;
         }
-
+        th:hover{
+            cursor: pointer;
+        }
         button {
             border: none;
             outline: none;
@@ -56,7 +60,7 @@
             font-weight: 600;
         }
 
-        span {
+        #edit-del-btn {
             float: right;
             margin-right: 70px;
         }
@@ -80,20 +84,81 @@
         .icon {
             margin-right: 5px;
         }
+
+        #search-box {
+            padding: 5px;
+            border: none;
+            outline: none;
+        }
+
+        #paginate-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .paginate-btn {
+            width: 20px;
+            border: solid gray 1px;
+            margin: 0px 5px;
+        }
+
+        #creat-and-search {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #search-bar {
+            display: flex;
+            align-items: center;
+            border: solid rgb(190, 190, 190) 1px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .search-icon {
+            height: 100%;
+            width: fit-content;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .caret {
+            font-size: 12px;
+        }
+
+        .caret-up-down {
+            display: flex;
+            flex-direction: column;
+            float: right;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Nội dung bảng -->
     <div class="container">
         <h1>Danh sách học viên</h1>
-        <a id="them-hoc-vien" href="./them-moi-hoc-vien.html"><i class="fas fa-plus-circle icon"></i>Thêm học viên</a>
+        <div id="creat-and-search">
+            <a id="them-hoc-vien" href="./them-moi-hoc-vien.html"><i class="fas fa-plus-circle icon"></i>Thêm học
+                viên</a>
+            <div id="search-bar"><input id="search-box" type="text" placeholder="serach"><button class="search-icon"
+                    onclick="search()"><i class="fas fa-search "></i></button></div>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr class="header">
-                    <th style="width: 23%;">Họ tên</th>
-                    <th style="width: 12%;">Ngày sinh</th>
-                    <th style="width: 27%;">Email</th>
-                    <th>Số điện thoại</th>
+                    <th onclick="sort()" style="width: 23%;">Họ tên<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
+                    <th onclick="sort()" style="width: 12%;">Ngày sinh<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
+                    <th onclick="sort()" style="width: 27%;">Email<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
+                    <th onclick="sort()" style="width: 15%;">Số điện thoại<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="table-users">
@@ -101,10 +166,10 @@
                     <td>...</td>
                     <td>...</td>
                     <td>...</td>
-                    <td>...
-                        <span>
-                            <a class="edit-btn" href="./chinh-sua-hoc-vien.html"><i
-                                    class="fas fa-edit icon"></i>Chỉnh
+                    <td>...</td>
+                    <td>
+                        <span id="edit-del-btn">
+                            <a class="edit-btn" href="./chinh-sua-hoc-vien.html"><i class="fas fa-edit icon"></i>Chỉnh
                                 sửa</a>
                             |
                             <button class="del-btn" onclick="del()" data-bs-toggle="modal"
@@ -114,8 +179,11 @@
                 </tr>
             </tbody>
         </table>
+        <div id="paginate-box">
+            <button class="paginate-btn" onclick="pagiNation()">1</button>
+        </div>
     </div>
-
+    <!-- Hộp thoại thông báo xóa -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
