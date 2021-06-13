@@ -53,7 +53,7 @@ $('#save-btn').click(function () {
             dataType: 'json'
         }).done(function () {
             alert('Cập nhập thông tin thành công');
-            window.location="/danh-sach-hoc-vien.html";
+            window.location.href="/danh-sach-hoc-vien.html";
         });
     }
 });
