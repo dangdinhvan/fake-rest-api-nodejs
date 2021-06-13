@@ -41,7 +41,7 @@ $('#save-btn').click(function () {
             dataType: 'json'
         }).done(function () {
             alert('Thêm mới thành công');
-            window.location="./danh-sach-hoc-vien.html";
+            window.location="/danh-sach-hoc-vien.html";
         });
     }
 });
