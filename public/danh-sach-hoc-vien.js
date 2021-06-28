@@ -13,6 +13,7 @@ function del(id) {
         $('.modal').modal('hide');
         $(`#${id}`).remove();
       }, 100);
+      paginate();
     });
   });
 }
@@ -21,6 +22,7 @@ function del(id) {
 // Hàm chức năng tìm kiếm
 function search() {
   if ($('#search-box').val() === "") {
+    $("#table-users").html('');
     $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
   }
   else {
@@ -47,6 +49,7 @@ function search() {
                   </tr>`;
       }
       if(content===""){
+        $("#table-users").html('');
         $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
       }
       $("#table-users").html(content);
