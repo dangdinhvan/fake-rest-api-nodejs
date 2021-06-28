@@ -52,7 +52,10 @@ function search() {
         $("#table-users").html('');
         $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
       }
-      $("#table-users").html(content);
+      else {
+        $("#table-users").html(content);
+        $("#alert-for-no-result-search").css('display', 'none');
+      }
     });
   }
 }
