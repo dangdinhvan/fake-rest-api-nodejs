@@ -21,7 +21,7 @@ function del(id) {
 // Hàm chức năng tìm kiếm
 function search() {
   if ($('#search-box').val() === "") {
-    $("#table-users").html('<tr><td>Không có kết quả phù hợp<td><tr>');
+    $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
   }
   else {
     $.ajax(DOMAIN + `/users?q=${$('#search-box').val()}`, {
@@ -47,7 +47,7 @@ function search() {
                   </tr>`;
       }
       if(content===""){
-        $("#table-users").html('<tr><td>Không có kết quả phù hợp<td><tr>');
+        $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
       }
       $("#table-users").html(content);
     });
