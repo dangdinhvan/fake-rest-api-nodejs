@@ -48,7 +48,7 @@ function search() {
                     </td>
                   </tr>`;
       }
-      if(content===""){
+      if (content === "") {
         $("#table-users").html('');
         $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
       }
@@ -100,7 +100,7 @@ function paginate() {
       contentPagination += `<button class="paginate-btn btn-${i}" onclick="pagiNation(${i},${totalPage})">${i}</button>`
     }
     $('#paginate-box').html(contentPagination);
-    $(`.btn-1`).css('background-color', 'black').css('color','white');
+    $(`.btn-1`).css('background-color', 'black').css('color', 'white');
   })
 }
 paginate();
@@ -132,10 +132,10 @@ function pagiNation(pageNumber, totalPage) {
                   </tr>`;
     }
     $("#table-users").html(content);
-    $(`.btn-${pageNumber}`).css('background-color', 'black').css('color','white');
-    for(let i=1;i<=totalPage;i++){
-      if(i!==pageNumber){
-        $(`.btn-${i}`).css('background-color', 'white').css('color','black');
+    $(`.btn-${pageNumber}`).css('background-color', 'black').css('color', 'white');
+    for (let i = 1; i <= totalPage; i++) {
+      if (i !== pageNumber) {
+        $(`.btn-${i}`).css('background-color', 'white').css('color', 'black');
       }
     }
   });
