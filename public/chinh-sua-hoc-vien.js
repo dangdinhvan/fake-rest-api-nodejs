@@ -10,32 +10,32 @@ $.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
 });
 //-------------------------------------------
 
-// thay đổi hộp thoại thông báo required
-$(function () {
-    $("input[name=name]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập họ và tên");
-    };
-});
+// // thay đổi hộp thoại thông báo required
+// $(function () {
+//     $("input[name=name]")[0].oninvalid = function () {
+//         this.setCustomValidity("Bạn cần nhập họ và tên");
+//     };
+// });
 
-$(function () {
-    $("input[name=name]")[0].oninput = function () {
-        this.setCustomValidity("");
-    };
-});
-//--------------------------------------------------------
+// $(function () {
+//     $("input[name=name]")[0].oninput = function () {
+//         this.setCustomValidity("");
+//     };
+// });
+// //--------------------------------------------------------
 
-$(function () {
-    $("input[name=phone]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập số điện thoại");
-    };
-});
+// $(function () {
+//     $("input[name=phone]")[0].oninvalid = function () {
+//         this.setCustomValidity("Bạn cần nhập số điện thoại");
+//     };
+// });
 
-$(function () {
-    $("input[name=phone]")[0].oninput = function () {
-        this.setCustomValidity("");
-    };
-});
-//--------------------------------------------------------
+// $(function () {
+//     $("input[name=phone]")[0].oninput = function () {
+//         this.setCustomValidity("");
+//     };
+// });
+// //--------------------------------------------------------
 
 // Hàm chức năng chỉnh sửa thông tin học viên
 $('#save-btn').click(function () {
