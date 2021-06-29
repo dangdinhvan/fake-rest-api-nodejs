@@ -25,7 +25,7 @@ function del(id) {
 function search() {
   if ($('#search-box').val() === "") {
     $("#table-users").html('');
-    $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
+    $("#alert-for-no-result-search").css('display','block');
   }
   else {
     $.ajax(DOMAIN + `/users?q=${$('#search-box').val()}`, {
@@ -52,7 +52,7 @@ function search() {
       }
       if (content === "") {
         $("#table-users").html('');
-        $("#alert-for-no-result-search").html('Không có kết quả phù hợp');
+        $("#alert-for-no-result-search").css('display','block');
       }
       else {
         $("#table-users").html(content);
@@ -61,8 +61,6 @@ function search() {
     });
   }
 }
-
-
 
 $("#search-box").keyup(function (event) {
   if (event.keyCode === 13) {
