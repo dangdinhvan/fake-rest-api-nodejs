@@ -98,6 +98,7 @@ function paginate() {
                   </tr>`;
     };
     $("#table-users").html(content);
+    $("#alert-for-no-result-search").css('display', 'none');
 
     for (let i = 1; i <= totalPage; i++) {
       contentPagination += `<button class="paginate-btn btn-${i}" onclick="pagiNation(${i},${totalPage})">${i}</button>`
@@ -135,6 +136,8 @@ function pagiNation(pageNumber, totalPage) {
                   </tr>`;
     }
     $("#table-users").html(content);
+    $("#alert-for-no-result-search").css('display', 'none');
+    
     $(`.btn-${pageNumber}`).css('background-color', 'black').css('color', 'white');
     for (let i = 1; i <= totalPage; i++) {
       if (i !== pageNumber) {
