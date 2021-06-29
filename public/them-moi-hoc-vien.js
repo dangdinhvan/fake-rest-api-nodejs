@@ -1,12 +1,25 @@
 // thay đổi hộp thoại thông báo required
 $(function () {
-    $("input[name=name]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập họ và tên");
+    $("input[name=firstName]")[0].oninvalid = function () {
+        this.setCustomValidity("Bạn cần nhập họ");
     };
 });
 
 $(function () {
-    $("input[name=name]")[0].oninput = function () {
+    $("input[name=firstName]")[0].oninput = function () {
+        this.setCustomValidity("");
+    };
+});
+//--------------------------------------------------------
+
+$(function () {
+    $("input[name=lastName]")[0].oninvalid = function () {
+        this.setCustomValidity("Bạn cần nhập tên");
+    };
+});
+
+$(function () {
+    $("input[name=lastName]")[0].oninput = function () {
         this.setCustomValidity("");
     };
 });
@@ -27,13 +40,13 @@ $(function () {
 
 // Hàm chức năng thêm học viên
 $('#save-btn').click(function () {
-    if ($('#name').val() !== '' && $('#birthday').val() !== '' && $('#email').val() !== '' && $('#phone').val() !== '') {
+    if ($('#firstName').val() !== '' && $('#lastName').val() !== '' && $('#birthday').val() !== '' && $('#email').val() !== '' && $('#phone').val() !== '') {
         $.ajax({
             type: 'POST',
             url: "https://create-server-by-van.herokuapp.com/users",
             data: {
-                "firstName": '',
-                "lastName": $('#name').val(),
+                "firstName": $('#firstName').val(),
+                "lastName": $('#lastName').val(),
                 "birthday": $('#birthday').val(),
                 "email": $('#email').val(),
                 "phone": $('#phone').val()

@@ -3,7 +3,8 @@ const id = location.href.split('?id=')[1];
 $.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
     method: "GET"
 }).done(function (user) {
-    $('#name').val(user.lastName);
+    $('#firstName').val(user.firstName);
+    $('#lastName').val(user.lastName);
     $('#birthday').val(user.birthday);
     $('#email').val(user.email);
     $('#phone').val(user.phone);
@@ -12,13 +13,26 @@ $.ajax(`https://create-server-by-van.herokuapp.com/users/${id}`, {
 
 // thay đổi hộp thoại thông báo required
 $(function () {
-    $("input[name=name]")[0].oninvalid = function () {
-        this.setCustomValidity("Bạn cần nhập họ và tên");
+    $("input[name=firstName]")[0].oninvalid = function () {
+        this.setCustomValidity("Bạn cần nhập họ");
     };
 });
 
 $(function () {
-    $("input[name=name]")[0].oninput = function () {
+    $("input[name=firstName]")[0].oninput = function () {
+        this.setCustomValidity("");
+    };
+});
+//--------------------------------------------------------
+
+$(function () {
+    $("input[name=lastName]")[0].oninvalid = function () {
+        this.setCustomValidity("Bạn cần nhập tên");
+    };
+});
+
+$(function () {
+    $("input[name=lastName]")[0].oninput = function () {
         this.setCustomValidity("");
     };
 });
@@ -39,13 +53,13 @@ $(function () {
 
 // Hàm chức năng chỉnh sửa thông tin học viên
 $('#save-btn').click(function () {
-    if ($('#name').val() !== '' && $('#birthday').val() !== '' && $('#email').val() !== '' && $('#phone').val() !== '') {
+    if ($('#firstName').val() !== '' && $('#lastName').val() !== '' && $('#birthday').val() !== '' && $('#email').val() !== '' && $('#phone').val() !== '') {
         $.ajax({
             type: 'PATCH',
             url: `https://create-server-by-van.herokuapp.com/users/${id}`,
             data: {
-                "firstName": '',
-                "lastName": $('#name').val(),
+                "firstName": $('#firstName').val(),
+                "lastName": $('#lastName').val(),
                 "birthday": $('#birthday').val(),
                 "email": $('#email').val(),
                 "phone": $('#phone').val()

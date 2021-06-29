@@ -50,9 +50,11 @@
         th {
             color: white;
         }
-        th:hover{
+
+        th:hover {
             cursor: pointer;
         }
+
         button {
             border: none;
             outline: none;
@@ -124,17 +126,15 @@
             align-items: center;
         }
 
-        .caret {
-            font-size: 12px;
-        }
-
         .caret-up-down {
+            font-size: 12px;
             display: flex;
             flex-direction: column;
             float: right;
             margin-right: 10px;
         }
-        #alert-for-no-result-search{
+
+        #alert-for-no-result-search {
             width: 100%;
             text-align: center;
             margin-bottom: 32px;
@@ -155,14 +155,18 @@
         <table class="table table-striped">
             <thead>
                 <tr class="header">
-                    <th onclick="sort()" style="width: 23%;">Họ tên<span class="caret-up-down"><i
-                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
-                    <th onclick="sort()" style="width: 12%;">Ngày sinh<span class="caret-up-down"><i
-                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
-                    <th onclick="sort()" style="width: 27%;">Email<span class="caret-up-down"><i
-                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
-                    <th onclick="sort()" style="width: 15%;">Số điện thoại<span class="caret-up-down"><i
-                                class="fas fa-caret-up caret"></i><i class="fas fa-caret-down caret"></i></span></th>
+                    <th onclick="sortName()" style="width: 23%;">Họ tên<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret-name-up"></i><i
+                                class="fas fa-caret-down caret-name-down"></i></span></th>
+                    <th onclick="sortBirthday()" style="width: 12%;">Ngày sinh<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret-birthday-up"></i><i
+                                class="fas fa-caret-down caret-birthday-down"></i></span></th>
+                    <th onclick="sortEmail()" style="width: 27%;">Email<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret-email-up"></i><i
+                                class="fas fa-caret-down caret-email-down"></i></span></th>
+                    <th onclick="sortPhone()" style="width: 15%;">Số điện thoại<span class="caret-up-down"><i
+                                class="fas fa-caret-up caret-phone-up"></i><i
+                                class="fas fa-caret-down caret-phone-down"></i></span></th>
                     <th></th>
                 </tr>
             </thead>
