@@ -25,7 +25,7 @@ function del(id) {
 function search() {
   if ($('#search-box').val() === "") {
     $("#table-users").html('');
-    $("#alert-for-no-result-search").css('display','block');
+    $("#alert-for-no-result-search").css('display', 'block');
   }
   else {
     $.ajax(DOMAIN + `/users?q=${$('#search-box').val()}`, {
@@ -52,7 +52,7 @@ function search() {
       }
       if (content === "") {
         $("#table-users").html('');
-        $("#alert-for-no-result-search").css('display','block');
+        $("#alert-for-no-result-search").css('display', 'block');
       }
       else {
         $("#table-users").html(content);
@@ -137,7 +137,7 @@ function pagiNation(pageNumber, totalPage) {
     }
     $("#table-users").html(content);
     $("#alert-for-no-result-search").css('display', 'none');
-    
+
     $(`.btn-${pageNumber}`).css('background-color', 'black').css('color', 'white');
     for (let i = 1; i <= totalPage; i++) {
       if (i !== pageNumber) {
@@ -167,10 +167,17 @@ function sortName() {
     $('.caret-name-down').css('visibility', 'visible');
   }
   else {
-    attribute = "lastName";
+    attribute = "firstName";
     if (tempName === true) {
       direction = "asc";
       tempName = false;
+
+      demBirthday = 0;
+      demEmail = 0;
+      demPhone = 0;
+      tempBirthday = true;
+      tempEmail = true;
+      tempPhone = true;
       $('.caret-name-up').css('visibility', 'visible');
       $('.caret-name-down').css('visibility', 'hidden');
       $('.caret-birthday-up').css('visibility', 'visible');
@@ -183,6 +190,13 @@ function sortName() {
     else {
       direction = "desc";
       tempName = true;
+
+      demBirthday = 0;
+      demEmail = 0;
+      demPhone = 0;
+      tempBirthday = true;
+      tempEmail = true;
+      tempPhone = true;
       $('.caret-name-up').css('visibility', 'hidden');
       $('.caret-name-down').css('visibility', 'visible');
       $('.caret-birthday-up').css('visibility', 'visible');
@@ -211,6 +225,13 @@ function sortBirthday() {
     if (tempBirthday === true) {
       direction = "asc";
       tempBirthday = false;
+
+      demName = 0;
+      demEmail = 0;
+      demPhone = 0;
+      tempName = true;
+      tempEmail = true;
+      tempPhone = true;
       $('.caret-birthday-up').css('visibility', 'visible');
       $('.caret-birthday-down').css('visibility', 'hidden');
       $('.caret-name-up').css('visibility', 'visible');
@@ -223,6 +244,13 @@ function sortBirthday() {
     else {
       direction = "desc";
       tempBirthday = true;
+
+      demName = 0;
+      demEmail = 0;
+      demPhone = 0;
+      tempName = true;
+      tempEmail = true;
+      tempPhone = true;
       $('.caret-birthday-up').css('visibility', 'hidden');
       $('.caret-birthday-down').css('visibility', 'visible');
       $('.caret-name-up').css('visibility', 'visible');
@@ -251,6 +279,13 @@ function sortEmail() {
     if (tempEmail === true) {
       direction = "asc";
       tempEmail = false;
+
+      demName = 0;
+      demBirthday = 0;
+      demPhone = 0;
+      tempName = true;
+      tempBirthday = true;
+      tempPhone = true;
       $('.caret-email-up').css('visibility', 'visible');
       $('.caret-email-down').css('visibility', 'hidden');
       $('.caret-name-up').css('visibility', 'visible');
@@ -263,6 +298,13 @@ function sortEmail() {
     else {
       direction = "desc";
       tempEmail = true;
+
+      demName = 0;
+      demBirthday = 0;
+      demPhone = 0;
+      tempName = true;
+      tempBirthday = true;
+      tempPhone = true;
       $('.caret-email-up').css('visibility', 'hidden');
       $('.caret-email-down').css('visibility', 'visible');
       $('.caret-name-up').css('visibility', 'visible');
@@ -291,6 +333,13 @@ function sortPhone() {
     if (tempPhone === true) {
       direction = "asc";
       tempPhone = false;
+
+      demName = 0;
+      demBirthday = 0;
+      demEmail = 0;
+      tempName = true;
+      tempBirthday = true;
+      tempEmail = true;
       $('.caret-phone-up').css('visibility', 'visible');
       $('.caret-phone-down').css('visibility', 'hidden');
       $('.caret-name-up').css('visibility', 'visible');
@@ -303,6 +352,13 @@ function sortPhone() {
     else {
       direction = "desc";
       tempPhone = true;
+
+      demName = 0;
+      demBirthday = 0;
+      demEmail = 0;
+      tempName = true;
+      tempBirthday = true;
+      tempEmail = true;
       $('.caret-phone-up').css('visibility', 'hidden');
       $('.caret-phone-down').css('visibility', 'visible');
       $('.caret-name-up').css('visibility', 'visible');
