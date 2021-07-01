@@ -28,7 +28,7 @@ function search() {
     $("#alert-for-no-result-search").css('display', 'block');
   }
   else {
-    $.ajax(DOMAIN + `/users?q=${$('#search-box').val()}`, {
+    $.ajax(DOMAIN + `/users?q=${$('#search-box').val()}&_page=1&_limit=` + limitOnePage + `&_sort=${attribute}&_order=${direction}`, {
       method: "GET"
     }).done(function (users, textStatus, request) {
       let totalPage = Math.ceil(request.getResponseHeader('x-Total-Count') / limitOnePage);
