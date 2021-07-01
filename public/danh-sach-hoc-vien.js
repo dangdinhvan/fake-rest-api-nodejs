@@ -58,6 +58,7 @@ function search() {
         $("#table-users").html(content);
         $("#alert-for-no-result-search").css('display', 'none');
       }
+      paginate();
     });
   }
 }
