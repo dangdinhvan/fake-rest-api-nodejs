@@ -30,8 +30,10 @@ function search() {
   else {
     $.ajax(DOMAIN + `/users?q=${$('#search-box').val()}`, {
       method: "GET"
-    }).done(function (users) {
+    }).done(function (users, textStatus, request) {
+      let totalPage = Math.ceil(request.getResponseHeader('x-Total-Count') / limitOnePage);
       let content = "";
+      let contentPagination = "";
       for (let i = 0; i < users.length; i++) {
         const user = users[i];
         content += `<tr id="${user.id}">
@@ -58,7 +60,12 @@ function search() {
         $("#table-users").html(content);
         $("#alert-for-no-result-search").css('display', 'none');
       }
-      paginate();
+
+      for (let i = 1; i <= totalPage; i++) {
+        contentPagination += `<button class="paginate-btn btn-${i}" onclick="pagiNation(${i},${totalPage})">${i}</button>`
+      }
+      $('#paginate-box').html(contentPagination);
+      $(`.btn-1`).css('background-color', 'black').css('color', 'white');
     });
   }
 }
