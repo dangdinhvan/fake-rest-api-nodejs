@@ -70,8 +70,8 @@ $("#save-btn").click(function () {
     validateEmail() === true
   ) {
     $.ajax({
-      type: "PATCH",
       url: `https://create-server-by-van.herokuapp.com/users/${id}`,
+      type: "PATCH",
       data: {
         firstName: $("#firstName").val(),
         lastName: $("#lastName").val(),

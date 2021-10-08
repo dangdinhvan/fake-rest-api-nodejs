@@ -48,6 +48,7 @@ function validateEmail() {
 
 // Hàm chức năng thêm học viên
 $("#save-btn").click(function () {
+  console.log(validateEmail());
   if (
     $("#firstName").val() !== "" &&
     $("#lastName").val() !== "" &&
@@ -57,8 +58,8 @@ $("#save-btn").click(function () {
     validateEmail() === true
   ) {
     $.ajax({
-      type: "POST",
       url: "https://create-server-by-van.herokuapp.com/users",
+      type: "POST",
       data: {
         firstName: $("#firstName").val(),
         lastName: $("#lastName").val(),
