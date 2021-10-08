@@ -1,5 +1,5 @@
 const DOMAIN = "https://create-server-by-van.herokuapp.com";
-const limitOnePage = 2;
+const limitOnePage = 3;
 let attribute = "id";
 let direction = "desc";
 

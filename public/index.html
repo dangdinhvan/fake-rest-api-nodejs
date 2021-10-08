@@ -79,9 +79,11 @@
             margin: 10px;
             border-radius: 5px;
         }
-        #submit-button:hover{
+
+        #submit-button:hover {
             background-color: #46965d;
         }
+
         #result {
             width: 265px;
             height: 25px;
@@ -96,9 +98,9 @@
             <h3>Member Login</h3>
             <form>
                 <div class="input"><i class="fas fa-user icon-login"></i><input id="user" type="text"
-                        placeholder="Tên đăng nhập" name="username"></div>
+                        placeholder="Tên đăng nhập (admin)" name="username"></div>
                 <div class="input"><i class="fas fa-lock icon-login"></i><input id="password" type="password"
-                        placeholder="Mật khẩu" name="password"></div>
+                        placeholder="Mật khẩu (admin)" name="password"></div>
                 <div id="result"></div>
             </form>
             <button id="submit-button" onclick="login()">Đăng nhập</button>
