@@ -53,7 +53,6 @@ $("#save-btn").click(function () {
     $("#firstName").val() !== "" &&
     $("#lastName").val() !== "" &&
     $("#birthday").val() !== "" &&
-    $("#email").val() !== "" &&
     $("#phone").val() !== "" &&
     validateEmail() === true
   ) {
