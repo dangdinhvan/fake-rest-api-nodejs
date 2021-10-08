@@ -69,7 +69,7 @@ $("#save-btn").click(function () {
       dataType: "json",
     }).done(function () {
       alert("Thêm mới thành công");
-      location.href = "./danh-sach-hoc-vien.html";
+      location.href = "/danh-sach-hoc-vien.html";
     });
   }
 });
