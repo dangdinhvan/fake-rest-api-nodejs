@@ -51,26 +51,28 @@ $("#save-btn").click(function () {
     $("#firstName").val() !== "" &&
     $("#lastName").val() !== "" &&
     $("#birthday").val() !== "" &&
-    validateEmail() === true &&
+    $("#email").val() !== "" &&
     $("#phone").val() !== ""
   ) {
-    $.ajax({
-      url: "https://create-server-by-van.herokuapp.com/users",
-      type: "POST",
-      data: {
-        firstName: $("#firstName").val(),
-        lastName: $("#lastName").val(),
-        birthday: $("#birthday").val(),
-        email: $("#email").val(),
-        phone: $("#phone").val(),
-      },
-      dataType: "json",
-    }).done(function () {
-      alert("Thêm mới thành công");
-      location.href = "/danh-sach-hoc-vien.html";
-    });
-  } else {
-    alert("Bạn cần nhập đúng định dạng email");
+    if (validateEmail() === true) {
+      $.ajax({
+        url: "https://create-server-by-van.herokuapp.com/users",
+        type: "POST",
+        data: {
+          firstName: $("#firstName").val(),
+          lastName: $("#lastName").val(),
+          birthday: $("#birthday").val(),
+          email: $("#email").val(),
+          phone: $("#phone").val(),
+        },
+        dataType: "json",
+      }).done(function () {
+        alert("Thêm mới thành công");
+        location.href = "/danh-sach-hoc-vien.html";
+      });
+    } else {
+      alert("Bạn cần nhập đúng định dạng email");
+    }
   }
 });
 //---------------------------------------------

@@ -51,22 +51,41 @@ $(function () {
 });
 //--------------------------------------------------------
 
+function validateEmail() {
+  const email = $("#email").val();
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(String(email).toLowerCase());
+}
+
 // Hàm chức năng chỉnh sửa thông tin học viên
 $("#save-btn").click(function () {
-  $.ajax({
-    url: `https://create-server-by-van.herokuapp.com/users/${id}`,
-    type: "PATCH",
-    data: {
-      firstName: $("#firstName").val(),
-      lastName: $("#lastName").val(),
-      birthday: $("#birthday").val(),
-      email: $("#email").val(),
-      phone: $("#phone").val(),
-    },
-    dataType: "json",
-  }).done(function () {
-    alert("Cập nhập thông tin thành công");
-    location.href = "/danh-sach-hoc-vien.html";
-  });
+  if (
+    $("#firstName").val() !== "" &&
+    $("#lastName").val() !== "" &&
+    $("#birthday").val() !== "" &&
+    $("#email").val() !== "" &&
+    $("#phone").val() !== ""
+  ) {
+    if (validateEmail() === true) {
+      $.ajax({
+        url: `https://create-server-by-van.herokuapp.com/users/${id}`,
+        type: "PATCH",
+        data: {
+          firstName: $("#firstName").val(),
+          lastName: $("#lastName").val(),
+          birthday: $("#birthday").val(),
+          email: $("#email").val(),
+          phone: $("#phone").val(),
+        },
+        dataType: "json",
+      }).done(function () {
+        alert("Cập nhập thông tin thành công");
+        location.href = "/danh-sach-hoc-vien.html";
+      });
+    } else {
+      alert("Bạn cần nhập đúng định dạng email");
+    }
+  }
 });
 //------------------------------------------
