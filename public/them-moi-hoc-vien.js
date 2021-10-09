@@ -25,20 +25,9 @@ $(function () {
 });
 //--------------------------------------------------------
 
-function validateEmail() {
-  const email = $("#email").val();
-  const regex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return regex.test(String(email).toLowerCase());
-}
-
 $(function () {
   $("input[name=email]")[0].oninvalid = function () {
-    if (this.val() === "") {
-      this.setCustomValidity("Bạn cần nhập email");
-    } else if (validateEmail() === false) {
-      this.setCustomValidity("Bạn cần nhập đúng định dạng email");
-    }
+    this.setCustomValidity("Bạn cần nhập email");
   };
 });
 
@@ -68,7 +57,7 @@ $("#save-btn").click(function () {
     $("#firstName").val() !== "" &&
     $("#lastName").val() !== "" &&
     $("#birthday").val() !== "" &&
-    validateEmail() === true &&
+    $("#email").val() !== "" &&
     $("#phone").val() !== ""
   ) {
     $.ajax({
@@ -88,4 +77,4 @@ $("#save-btn").click(function () {
     });
   }
 });
-//-----------------------------
+//---------------------------------------------
