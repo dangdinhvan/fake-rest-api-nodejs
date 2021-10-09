@@ -72,10 +72,11 @@ $("#save-btn").click(function () {
       });
     } else {
       alert("Bạn cần nhập đúng định dạng email");
-      return;
+      $("#save-btn").attr("disabled", true);
+      setTimeout(() => {
+        $("#save-btn").attr("disabled", false);
+      }, 1000);
     }
-  } else {
-    return;
   }
 });
 //---------------------------------------------
