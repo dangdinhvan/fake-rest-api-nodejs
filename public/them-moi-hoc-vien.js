@@ -34,17 +34,17 @@ function validateEmail() {
 
 $(function () {
   $("input[name=email]")[0].oninvalid = function () {
-    this.setCustomValidity("Bạn cần nhập email");
+    if (this.val() === "") {
+      this.setCustomValidity("Bạn cần nhập email");
+    } else if (validateEmail() === false) {
+      this.setCustomValidity("Bạn cần nhập đúng định dạng email");
+    }
   };
 });
 
 $(function () {
   $("input[name=email]")[0].oninput = function () {
-    if (validateEmail() === false) {
-      this.setCustomValidity("Bạn cần nhập đúng định dạng email");
-    } else {
-      this.setCustomValidity("");
-    }
+    this.setCustomValidity("");
   };
 });
 //--------------------------------------------------------
