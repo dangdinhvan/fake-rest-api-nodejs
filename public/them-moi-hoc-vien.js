@@ -34,17 +34,17 @@ function validateEmail() {
 
 $(function () {
   $("input[name=email]")[0].oninvalid = function () {
-    if (this.val() === "") {
-      this.setCustomValidity("Bạn cần nhập email");
-    } else if (validateEmail() === false) {
-      this.setCustomValidity("Bạn cần nhập đúng định dạng email");
-    }
+    this.setCustomValidity("Bạn cần nhập email");
   };
 });
 
 $(function () {
   $("input[name=email]")[0].oninput = function () {
-    this.setCustomValidity("");
+    if (validateEmail() === false) {
+      this.setCustomValidity("Bạn cần nhập đúng định dạng email");
+    } else {
+      this.setCustomValidity("");
+    }
   };
 });
 //--------------------------------------------------------
@@ -86,11 +86,6 @@ $("#save-btn").click(function () {
       alert("Thêm mới thành công");
       location.href = "/danh-sach-hoc-vien.html";
     });
-  } else {
-    $("#save-btn").attr("disabled", true);
-    setTimeout(() => {
-      $("#save-btn").attr("disabled", false);
-    }, 1000);
   }
 });
 //-----------------------------
