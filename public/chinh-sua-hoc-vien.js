@@ -39,19 +39,6 @@ $(function () {
 //--------------------------------------------------------
 
 $(function () {
-  $("input[name=email]")[0].oninvalid = function () {
-    this.setCustomValidity("Bạn cần nhập email");
-  };
-});
-
-$(function () {
-  $("input[name=email]")[0].oninput = function () {
-    this.setCustomValidity("");
-  };
-});
-//--------------------------------------------------------
-
-$(function () {
   $("input[name=phone]")[0].oninvalid = function () {
     this.setCustomValidity("Bạn cần nhập số điện thoại");
   };
@@ -66,28 +53,20 @@ $(function () {
 
 // Hàm chức năng chỉnh sửa thông tin học viên
 $("#save-btn").click(function () {
-  if (
-    $("#firstName").val() !== "" &&
-    $("#lastName").val() !== "" &&
-    $("#birthday").val() !== "" &&
-    $("#email").val() !== "" &&
-    $("#phone").val() !== ""
-  ) {
-    $.ajax({
-      url: `https://create-server-by-van.herokuapp.com/users/${id}`,
-      type: "PATCH",
-      data: {
-        firstName: $("#firstName").val(),
-        lastName: $("#lastName").val(),
-        birthday: $("#birthday").val(),
-        email: $("#email").val(),
-        phone: $("#phone").val(),
-      },
-      dataType: "json",
-    }).done(function () {
-      alert("Cập nhập thông tin thành công");
-      location.href = "/danh-sach-hoc-vien.html";
-    });
-  }
+  $.ajax({
+    url: `https://create-server-by-van.herokuapp.com/users/${id}`,
+    type: "PATCH",
+    data: {
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
+      birthday: $("#birthday").val(),
+      email: $("#email").val(),
+      phone: $("#phone").val(),
+    },
+    dataType: "json",
+  }).done(function () {
+    alert("Cập nhập thông tin thành công");
+    location.href = "/danh-sach-hoc-vien.html";
+  });
 });
 //------------------------------------------
