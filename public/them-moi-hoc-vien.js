@@ -25,6 +25,30 @@ $(function () {
 });
 //--------------------------------------------------------
 
+function validateEmail() {
+  const email = $("#email").val();
+  const regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(String(email).toLowerCase());
+}
+
+$(function () {
+  $("input[name=email]")[0].oninvalid = function () {
+    if (this.val() === "") {
+      this.setCustomValidity("Bạn cần nhập email");
+    } else if (validateEmail() === false) {
+      this.setCustomValidity("Bạn cần nhập đúng định dạng email");
+    }
+  };
+});
+
+$(function () {
+  $("input[name=email]")[0].oninput = function () {
+    this.setCustomValidity("");
+  };
+});
+//--------------------------------------------------------
+
 $(function () {
   $("input[name=phone]")[0].oninvalid = function () {
     this.setCustomValidity("Bạn cần nhập số điện thoại");
@@ -44,7 +68,7 @@ $("#save-btn").click(function () {
     $("#firstName").val() !== "" &&
     $("#lastName").val() !== "" &&
     $("#birthday").val() !== "" &&
-    $("#email").val() !== "" &&
+    validateEmail() === true &&
     $("#phone").val() !== ""
   ) {
     $.ajax({
@@ -62,6 +86,11 @@ $("#save-btn").click(function () {
       alert("Thêm mới thành công");
       location.href = "/danh-sach-hoc-vien.html";
     });
+  } else {
+    $("#save-btn").attr("disabled", true);
+    setTimeout(() => {
+      $("#save-btn").attr("disabled", false);
+    }, 1000);
   }
 });
 //-----------------------------
