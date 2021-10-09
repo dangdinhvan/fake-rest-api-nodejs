@@ -85,7 +85,10 @@ $("#save-btn").click(function () {
       });
     } else {
       alert("Bạn cần nhập đúng định dạng email");
+      return;
     }
+  } else {
+    return;
   }
 });
 //------------------------------------------
